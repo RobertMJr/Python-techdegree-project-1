@@ -7,7 +7,6 @@ sharks = []
 dragons = []
 raptors= []
 
-
 def create_teams():
     # read the csv file
     with open('soccer_players.csv', newline='') as csvfile:
