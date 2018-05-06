@@ -62,9 +62,11 @@ def write_to_file():
              
 def welcome_letter():
     for i in sharks:
-        file = open("{}.txt".format(i[0].lower()), "w")
+        name = i[0].split(" ")
+        name = name[0].lower() + "_" + name[1].lower()
+        file = open("{}.txt".format(name), "w")
         file.write("Test")
-    file.close()
+        
 
 # ensure script does not execute when imported       
 if __name__ == "__main__":
