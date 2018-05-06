@@ -62,11 +62,14 @@ def write_to_file():
              
 def welcome_letter():
     for i in sharks:
+        team = 'Sharks'
+        date_and_time = 'Monday, 20th of April, at 2PM'
         name = i[0].split(" ")
         name = name[0].lower() + "_" + name[1].lower()
+        guardian = i[2]
         file = open("{}.txt".format(name), "w")
-        file.write("Test")
-        
+        file.write("Dear {}, I am glad to inform you that {} has been selected to be part of the soccer team {}.\nPlease join us {} for the first practice session. \n\nThank you.".format(guardian, i[0], team, date_and_time))
+        file.close()
 
 # ensure script does not execute when imported       
 if __name__ == "__main__":
