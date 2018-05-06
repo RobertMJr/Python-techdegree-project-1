@@ -60,9 +60,15 @@ def write_to_file():
             
     file.close()
              
+def welcome_letter():
+    for i in sharks:
+        file = open("{}.txt".format(i[0].lower()), "w")
+        file.write("Test")
+    file.close()
 
 # ensure script does not execute when imported       
 if __name__ == "__main__":
     create_teams()
     write_to_file()
+    welcome_letter()
 
