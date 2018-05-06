@@ -81,7 +81,7 @@ def welcome_letter(team):
         file = open("{}.txt".format(name), "w")
         file.write("""Dear {},
 \nI am glad to inform you that {} has been selected to be part of the soccer team {}.\nPlease join us {} for the first practice session.
-                    \n\nThank you.\nRobert Muraru\nSoccer League Coordinator """.format(guardian, i[0], team_name, date_and_time))
+                    \n\nThank you.\nRobert Muraru\nSoccer League Coordinator""".format(guardian, i[0], team_name, date_and_time))
         file.close()
 
 # ensure script does not execute when imported       
