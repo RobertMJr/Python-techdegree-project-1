@@ -1,27 +1,56 @@
 import csv
+   
+xp_players = []
+new_players = []
+sharks = []
+dragons = []
+raptors= []
 
-# make sure the script does not execute when imported
-if __name__ == "__main__":
+def create_teams():
+    with open('soccer_players.csv', newline='') as csvfile:
+        teamreader = csv.DictReader(csvfile)
+        for row in teamreader:
+            if row['Soccer Experience'] == 'YES':
+                xp_players.append((row['Name'], row['Soccer Experience'], row['Guardian Name(s)']))
+            else:
+                new_players.append((row['Name'], row['Soccer Experience'], row['Guardian Name(s)']))
+    for counter, player in enumerate(xp_players):
+        if counter <3:
+            sharks.append(player)
+        elif counter < 6:
+            dragons.append(player)
+        else:
+            raptors.append(player)
+                
+    for counter, player in enumerate(new_players):
+        if counter <3:
+            sharks.append(player)
+        elif counter <6:
+            dragons.append(player)
+        else:
+            raptors.append(player)
 
-
-    
-    list_of_exp_players = []
-    list_of_new_players = []
-    def sort_players():
-        with open('soccer_players.csv', newline='') as csvfile:
-            teamreader = csv.DictReader(csvfile)
-            for row in teamreader:
-                if row['Soccer Experience'] == 'YES':
-                    list_of_exp_players.append((row['Name'], row['Height (inches)'], row['Soccer Experience'], row['Guardian Name(s)']))
-                else:
-                    list_of_new_players.append((row['Name'], row['Height (inches)'], row['Soccer Experience'], row['Guardian Name(s)']))
-            print("These are the experienced players: ")
-            for player in list_of_exp_players:
-                print(player)
-            print("\n")
-            print("These are the new players: ")
-            for player in list_of_new_players:
-                print(player)
+def write_to_file():
+    file = open("teams.txt", "w")
         
-sort_players()            
+    file.write("\nSharks \n" + "====== \n")
+    for i in sharks:
+        file.write(", ".join(i) + "\n")
+            
+    file.write("\nDragons \n" + "====== \n")
+    for i in dragons:
+        file.write(", ".join(i) + "\n")
+            
+    file.write("\nRaptors \n" + "====== \n")
+    for i in raptors:
+        file.write(", ".join(i) + "\n")
+
+            
+    file.close()
+             
+
+       
+if __name__ == "__main__":
+    create_teams()
+    write_to_file()
 
