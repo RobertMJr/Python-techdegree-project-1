@@ -33,15 +33,15 @@ def create_teams():
 def write_to_file():
     file = open("teams.txt", "w")
         
-    file.write("\nSharks \n" + "====== \n")
+    file.write("Sharks \n" + "====== \n")
     for i in sharks:
         file.write(", ".join(i) + "\n")
             
-    file.write("\nDragons \n" + "====== \n")
+    file.write("\nDragons \n" + "======= \n")
     for i in dragons:
         file.write(", ".join(i) + "\n")
             
-    file.write("\nRaptors \n" + "====== \n")
+    file.write("\nRaptors \n" + "======= \n")
     for i in raptors:
         file.write(", ".join(i) + "\n")
 
