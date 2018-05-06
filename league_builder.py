@@ -60,20 +60,36 @@ def write_to_file():
             
     file.close()
              
-def welcome_letter():
-    for i in sharks:
-        team = 'Sharks'
+def welcome_letter(team):
+    # check and ensure the correct team will be mentioned in the welcome letter, add different training dates
+    if team == sharks:
+        team_name = 'Sharks'
         date_and_time = 'Monday, 20th of April, at 2PM'
+    elif team == dragons:
+        team_name = 'Dragons'
+        date_and_time = 'Tuesday, 21st of April, at 3PM'
+    else:
+        team_name = 'Raptors'
+        date_and_time = 'Friday, 24th of April, at 1PM'
+
+    # go through the team    
+    for i in team:
+        #make sure the text file will have the format firstname_lastname
         name = i[0].split(" ")
         name = name[0].lower() + "_" + name[1].lower()
         guardian = i[2]
+        #write the welcome letter
         file = open("{}.txt".format(name), "w")
-        file.write("Dear {}, I am glad to inform you that {} has been selected to be part of the soccer team {}.\nPlease join us {} for the first practice session. \n\nThank you.".format(guardian, i[0], team, date_and_time))
+        file.write("""Dear {},
+\nI am glad to inform you that {} has been selected to be part of the soccer team {}.\nPlease join us {} for the first practice session.
+                    \n\nThank you.\nRobert Muraru\nSoccer League Coordinator """.format(guardian, i[0], team_name, date_and_time))
         file.close()
 
 # ensure script does not execute when imported       
 if __name__ == "__main__":
     create_teams()
     write_to_file()
-    welcome_letter()
+    welcome_letter(sharks)
+    welcome_letter(dragons)
+    welcome_letter(raptors)
 
